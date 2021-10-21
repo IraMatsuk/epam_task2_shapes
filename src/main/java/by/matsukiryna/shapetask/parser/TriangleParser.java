@@ -1,5 +1,7 @@
 package by.matsukiryna.shapetask.parser;
 
+import java.util.List;
+
 public interface TriangleParser {
-    double[] parseLine(String line);
+    double[] parseLine(List<String> line);
 }

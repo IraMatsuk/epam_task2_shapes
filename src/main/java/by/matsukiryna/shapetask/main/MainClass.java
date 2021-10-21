@@ -14,6 +14,6 @@ public class MainClass {
         TriangleFileReaderImpl triangleFileReader = new TriangleFileReaderImpl();
         List<String> lines = triangleFileReader.readDataFromFile(FILE_PATH);
         TriangleParserImpl triangleParser = new TriangleParserImpl();
-        double[] parseLines = triangleParser.parseLine(lines.toString());
+        double[] parseLines = triangleParser.parseLine(lines);
     }
 }
