@@ -7,14 +7,10 @@ import org.apache.logging.log4j.Logger;
 
 public class TriangleValidator {
     static final Logger logger = LogManager.getLogger();
+    private static final String TRIANGLE_DATA_REGEX = "^-?\\d+(\\.\\d+)?(\\s+-?\\d+(\\.\\d+)?){5}$";
 
     private TriangleValidator() {
 
-    }
-
-    public static boolean isTriangleValid(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC) {
-        return ((pointC.getX() - pointA.getX()) * (pointB.getY() - pointA.getY()) -
-                (pointC.getY() - pointA.getY()) * (pointB.getX() - pointA.getX()) != 0);
     }
 
     public static boolean isTriangleValid(Triangle triangle) {
@@ -22,5 +18,14 @@ public class TriangleValidator {
         CustomPoint pointB = triangle.getPointB();
         CustomPoint pointC = triangle.getPointC();
         return isTriangleValid(pointA, pointB, pointC);
+    }
+
+    public static boolean isTriangleValid(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC) {
+        return ((pointC.getX() - pointA.getX()) * (pointB.getY() - pointA.getY()) -
+                (pointC.getY() - pointA.getY()) * (pointB.getX() - pointA.getX()) != 0);
+    }
+
+    public static boolean isTriangleData(String data) {
+        return data.matches(TRIANGLE_DATA_REGEX);
     }
 }

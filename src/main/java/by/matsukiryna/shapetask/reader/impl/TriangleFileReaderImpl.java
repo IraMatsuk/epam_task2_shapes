@@ -3,7 +3,7 @@ package by.matsukiryna.shapetask.reader.impl;
 import by.matsukiryna.shapetask.exception.ShapeException;
 import by.matsukiryna.shapetask.reader.TriangleFileReader;
 
-import org.apache.logging.log4j.Level;
+import by.matsukiryna.shapetask.validator.FileValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,19 +29,20 @@ public class TriangleFileReaderImpl implements TriangleFileReader {
         URL resource = classLoader.getResource(filePath);
         String strPath = new File(resource.getFile()).getPath();
         Path path = Paths.get(strPath);
-        List<String> lines;
 
-        if (filePath == null || filePath.isBlank()) {
+        if (!FileValidator.isFileValidate(strPath)) {
+            logger.error("File name is null or empty " + filePath);
             throw new ShapeException("File name is null or empty " + filePath);
         }
 
+        List<String> lines;
         try (Stream<String> streamLines = Files.lines(path)) {
-            lines = streamLines.peek(line -> logger.info(line))
-                    .collect(Collectors.toList());
+            lines = streamLines.collect(Collectors.toList());
         } catch (IOException e) {
             logger.error("Error while reading file " + filePath, e.getMessage());
-            throw new ShapeException("Error while reading file " + filePath);
+            throw new ShapeException("Error while reading file " + filePath + e.getMessage());
         }
+        logger.info("File was read. Result: " + lines);
         return lines;
     }
 }
