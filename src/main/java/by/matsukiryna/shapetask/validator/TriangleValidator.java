@@ -2,8 +2,6 @@ package by.matsukiryna.shapetask.validator;
 
 import by.matsukiryna.shapetask.entity.CustomPoint;
 import by.matsukiryna.shapetask.entity.Triangle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class TriangleValidator {
     private static final String TRIANGLE_DATA_REGEX = "^-?\\d+(\\.\\d+)?(\\s+-?\\d+(\\.\\d+)?){5}$";

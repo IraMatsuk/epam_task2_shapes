@@ -1,5 +1,6 @@
 package by.matsukiryna.shapetask.main;
 
+import by.matsukiryna.shapetask.entity.CustomPoint;
 import by.matsukiryna.shapetask.entity.Triangle;
 import by.matsukiryna.shapetask.entity.Warehouse;
 import by.matsukiryna.shapetask.exception.ShapeException;
@@ -25,7 +26,7 @@ public class MainClass {
         double[] parsedLines = triangleParser.parseLine(lines);
         TriangleFactory triangleFactory = new TriangleFactory();
         Triangle triangle = triangleFactory.createTriangle(parsedLines);
-        triangle.getPointC();
+        CustomPoint customPoint = new CustomPoint();
 
     }
 }

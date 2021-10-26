@@ -32,6 +32,32 @@ public class TriangleFactoryTest {
     }
 
     @Test
-    public void testCreateTriangle() {
+    public void testCreateTriangle() throws ShapeException {
+        double[] doubleArr = {2.3, 1, 2.0, 2, 3.5, 1};
+        Triangle actual = triangleFactory.createTriangle(doubleArr);
+        Triangle expected = new Triangle(new CustomPoint(2.3, 1),
+                new CustomPoint(2.0, 2), new CustomPoint(3.5, 1));
+        assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = ShapeException.class)
+    public void testCreateTriangleNullArray() throws ShapeException {
+        triangleFactory.createTriangle(null);
+    }
+
+    @Test(expectedExceptions = ShapeException.class)
+    public void testCreateTriangleWhenDoubleListIsEmpty() throws ShapeException {
+        double[] emptyList = {};
+        triangleFactory.createTriangle(emptyList);
+    }
+
+    @Test(expectedExceptions = ShapeException.class)
+    public void testCreateTriangleWhenElementsInArrayLessThatSix() throws ShapeException {
+        triangleFactory.createTriangle(new double[] {1.2, 2.2, 4.3, 5.1});
+    }
+
+    @Test(expectedExceptions = ShapeException.class)
+    public void testCreateTriangleWhenElementsInArrayMoreThatSix() throws ShapeException {
+        triangleFactory.createTriangle(new double[] {1.2, 2.2, 4.3, 5.1, 3.5, 1.1, 3.6});
     }
 }
