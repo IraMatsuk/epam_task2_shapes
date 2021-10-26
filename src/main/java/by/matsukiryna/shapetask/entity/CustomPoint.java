@@ -47,21 +47,13 @@ public class CustomPoint {
         this.z = z;
     }
 
-    public double getV() {
-        return v;
-    }
+    public double getV() { return v; }
 
-    public void setV(double v) {
-        this.v = v;
-    }
+    public void setV(double v) { this.v = v; }
 
-    public double getV1() {
-        return v1;
-    }
+    public double getV1() { return v1; }
 
-    public void setV1(double v1) {
-        this.v1 = v1;
-    }
+    public void setV1(double v1) { this.v1 = v1; }
 
     @Override
     public boolean equals(Object o) {

@@ -5,5 +5,5 @@ import by.matsukiryna.shapetask.exception.ShapeException;
 import java.util.List;
 
 public interface TriangleParser {
-    int[] parseLine(List<String> line) throws ShapeException;
+    double[] parseLine(List<String> line) throws ShapeException;
 }

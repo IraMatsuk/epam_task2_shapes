@@ -5,7 +5,6 @@ import by.matsukiryna.shapetask.observer.TriangleEvent;
 import by.matsukiryna.shapetask.observer.TriangleObservable;
 import by.matsukiryna.shapetask.observer.TriangleObserver;
 import by.matsukiryna.shapetask.util.IdGenerator;
-import by.matsukiryna.shapetask.validator.TriangleValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,10 +19,7 @@ public class Triangle implements TriangleObservable {
     private TriangleObserver triangleObserver;
     private List<TriangleObserver> observers = new ArrayList<>();
 
-    public Triangle(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC) throws ShapeException {
-        if (!TriangleValidator.isTriangleValid(pointA, pointB, pointC)) {
-            throw new ShapeException("Invalid points for triangle" + pointA + " " + pointB + " " + pointC);
-        }
+    public Triangle(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC) {
         this.triangleId = IdGenerator.generateId();
         this.pointA = pointA;
         this.pointB = pointB;
@@ -100,9 +96,9 @@ public class Triangle implements TriangleObservable {
     @Override
     public String toString() {
         return new StringJoiner(", ", Triangle.class.getSimpleName() + "[", "]")
-                .add("pointA=" + pointA)
-                .add("pointB=" + pointB)
-                .add("pointC=" + pointC)
+                .add("pointA = " + pointA)
+                .add("pointB = " + pointB)
+                .add("pointC = " + pointC)
                 .toString();
     }
 }
