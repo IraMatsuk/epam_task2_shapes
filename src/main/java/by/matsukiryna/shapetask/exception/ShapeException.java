@@ -15,6 +15,6 @@ public class ShapeException extends Exception {
         super(cause);
     }
 
-    public ShapeException(String s, double x, double y, double z, double height, double radius) {
-    }
+//    public ShapeException(String s, double x, double y, double z, double height, double radius) {
+//    }
 }

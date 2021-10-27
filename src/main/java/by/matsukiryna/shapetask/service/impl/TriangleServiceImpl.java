@@ -51,8 +51,9 @@ public class TriangleServiceImpl implements TriangleService {
         }
 
         double[] sides = calculateTriangleSides(triangle);
-        boolean equilateralTriangle = sides[0] == sides[1] &&
-                sides[0] == sides[2];
+        boolean equilateralTriangle = sides[0] == sides[1]
+                && sides[0] == sides[2]
+                && sides[1] == sides[2];
         logger.info(() -> equilateralTriangle ? "Triangle " + triangle.getTriangleId()
                 + " is equilateral" : "Triangle " + triangle.getTriangleId() + " isn't equilateral");
         return equilateralTriangle;
@@ -88,7 +89,7 @@ public class TriangleServiceImpl implements TriangleService {
 
     private double calculateSide(CustomPoint pointA, CustomPoint pointB) {
         double side = roundDouble(Math.hypot(pointB.getX() - pointA.getX(), pointB.getY() - pointA.getY()));
-        logger.debug("Side is ", side);
+        logger.debug("Side is " + side);
         return side;
     }
 
