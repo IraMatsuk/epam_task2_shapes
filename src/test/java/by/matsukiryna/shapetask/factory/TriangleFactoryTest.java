@@ -2,7 +2,7 @@ package by.matsukiryna.shapetask.factory;
 
 import by.matsukiryna.shapetask.entity.CustomPoint;
 import by.matsukiryna.shapetask.entity.Triangle;
-import by.matsukiryna.shapetask.exception.ShapeException;
+import by.matsukiryna.shapetask.exception.TriangleException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,7 +19,7 @@ public class TriangleFactoryTest {
     }
 
     @Test
-    public void testCreateTriangleList() throws ShapeException {
+    public void testCreateTriangleList() throws TriangleException {
         List<double[]> doubleList = List.of(new double[]{2.5, 3.4, 2.5, 6.4, 6.5, 3.4});
         List<Triangle> actual = triangleFactory.createTriangleList(doubleList);
         List<Triangle> expected = List.of(new Triangle(
@@ -30,7 +30,7 @@ public class TriangleFactoryTest {
     }
 
     @Test
-    public void testCreateTriangle() throws ShapeException {
+    public void testCreateTriangle() throws TriangleException {
         double[] doubleArr = {2.3, 1, 2.0, 2, 3.5, 1};
         Triangle actual = triangleFactory.createTriangle(doubleArr);
         Triangle expected = new Triangle(
@@ -40,24 +40,24 @@ public class TriangleFactoryTest {
         assertEquals(actual, expected);
     }
 
-    @Test(expectedExceptions = ShapeException.class)
-    public void testCreateTriangleNullArray() throws ShapeException {
+    @Test(expectedExceptions = TriangleException.class)
+    public void testCreateTriangleNullArray() throws TriangleException {
         triangleFactory.createTriangle(null);
     }
 
-    @Test(expectedExceptions = ShapeException.class)
-    public void testCreateTriangleWhenDoubleListIsEmpty() throws ShapeException {
+    @Test(expectedExceptions = TriangleException.class)
+    public void testCreateTriangleWhenDoubleListIsEmpty() throws TriangleException {
         double[] emptyList = {};
         triangleFactory.createTriangle(emptyList);
     }
 
-    @Test(expectedExceptions = ShapeException.class)
-    public void testCreateTriangleWhenElementsInArrayLessThatSix() throws ShapeException {
+    @Test(expectedExceptions = TriangleException.class)
+    public void testCreateTriangleWhenElementsInArrayLessThatSix() throws TriangleException {
         triangleFactory.createTriangle(new double[]{1.2, 2.2, 4.3, 5.1});
     }
 
-    @Test(expectedExceptions = ShapeException.class)
-    public void testCreateTriangleWhenElementsInArrayMoreThatSix() throws ShapeException {
+    @Test(expectedExceptions = TriangleException.class)
+    public void testCreateTriangleWhenElementsInArrayMoreThatSix() throws TriangleException {
         triangleFactory.createTriangle(new double[]{1.2, 2.2, 4.3, 5.1, 3.5, 1.1, 3.6});
     }
 }

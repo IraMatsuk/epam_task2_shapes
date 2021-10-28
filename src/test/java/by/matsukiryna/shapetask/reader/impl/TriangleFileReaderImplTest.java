@@ -1,13 +1,9 @@
 package by.matsukiryna.shapetask.reader.impl;
 
-import by.matsukiryna.shapetask.exception.ShapeException;
+import by.matsukiryna.shapetask.exception.TriangleException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static org.testng.Assert.*;
@@ -23,7 +19,7 @@ public class TriangleFileReaderImplTest {
     }
 
     @Test
-    public void testReadDataFromFile() throws ShapeException {
+    public void testReadDataFromFile() throws TriangleException {
         List<String> actual = triangleFileReader.readDataFromFile(CORRECT_PATH);
         List<String> expected = List.of("2.5 3.4  2.5 6.4  6.5 3.4");
         assertEquals(actual, expected);
@@ -31,18 +27,18 @@ public class TriangleFileReaderImplTest {
 
     //TODO test passed only when I write NullPointerException
     @Test(expectedExceptions = NullPointerException.class)
-    public void testReadNullFileException() throws NullPointerException, ShapeException {
+    public void testReadNullFileException() throws NullPointerException, TriangleException {
         triangleFileReader.readDataFromFile(null);
     }
 
-    @Test(expectedExceptions = ShapeException.class)
-    public void testReadDataWhenFileIsEmpty() throws ShapeException {
+    @Test(expectedExceptions = TriangleException.class)
+    public void testReadDataWhenFileIsEmpty() throws TriangleException {
         String path = " ";
         triangleFileReader.readDataFromFile(path);
     }
 
     @Test(expectedExceptions = NullPointerException.class)
-    public void testReadDataWhenFilePathIsNotCorrect() throws NullPointerException, ShapeException {
+    public void testReadDataWhenFilePathIsNotCorrect() throws NullPointerException, TriangleException {
         triangleFileReader.readDataFromFile(INCORRECT_PATH);
     }
 }

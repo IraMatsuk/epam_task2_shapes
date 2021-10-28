@@ -1,6 +1,6 @@
 package by.matsukiryna.shapetask.parser.impl;
 
-import by.matsukiryna.shapetask.exception.ShapeException;
+import by.matsukiryna.shapetask.exception.TriangleException;
 import by.matsukiryna.shapetask.parser.TriangleParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,10 +14,10 @@ public class TriangleParserImpl implements TriangleParser {
     private static final String REGEX_DELIMITER = "\\s+";
 
     @Override
-    public double[] parseLine(List<String> lines) throws ShapeException {
+    public double[] parseLine(List<String> lines) throws TriangleException {
         if (lines == null || lines.size() == 0) {
             logger.error("Input list is empty or size is zero.");
-            throw new ShapeException("Input list is empty or size is zero." + lines);
+            throw new TriangleException("Input list is empty or size is zero." + lines);
         }
         String listToStr = lines.stream()
                                 .map(n -> String.valueOf(n))

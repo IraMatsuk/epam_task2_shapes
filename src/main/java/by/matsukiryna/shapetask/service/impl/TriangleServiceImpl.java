@@ -49,7 +49,6 @@ public class TriangleServiceImpl implements TriangleService {
             logger.warn("Triangle is null.");
             return false;
         }
-
         double[] sides = calculateTriangleSides(triangle);
         boolean equilateralTriangle = sides[0] == sides[1]
                 && sides[0] == sides[2]
@@ -106,6 +105,12 @@ public class TriangleServiceImpl implements TriangleService {
 
     @Override
     public boolean isTriangle(Triangle triangle) {
-        return false;
+        double[] sides = calculateTriangleSides(triangle);
+        boolean existTriangle = (sides[0] + sides[1]) > sides[2]
+                && (sides[1] + sides[2]) > sides[0]
+                && (sides[0] + sides[2]) > sides[1];
+        logger.info(() -> existTriangle ? "Triangle " + triangle.getTriangleId()
+                + " is exist" : "Triangle " + triangle.getTriangleId() + " isn't exist");
+        return existTriangle;
     }
 }

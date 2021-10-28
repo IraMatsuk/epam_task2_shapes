@@ -1,9 +1,10 @@
 package by.matsukiryna.shapetask.entity;
 
-import by.matsukiryna.shapetask.exception.ShapeException;
+import by.matsukiryna.shapetask.exception.TriangleException;
 import by.matsukiryna.shapetask.observer.TriangleEvent;
 import by.matsukiryna.shapetask.observer.TriangleObservable;
 import by.matsukiryna.shapetask.observer.TriangleObserver;
+import by.matsukiryna.shapetask.observer.impl.TriangleObserverImpl;
 import by.matsukiryna.shapetask.util.IdGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +17,7 @@ public class Triangle implements TriangleObservable {
     private CustomPoint pointA;
     private CustomPoint pointB;
     private CustomPoint pointC;
-    private TriangleObserver triangleObserver;
+    private TriangleObserverImpl triangleObserver = new TriangleObserverImpl();
     private List<TriangleObserver> observers = new ArrayList<>();
 
     public Triangle(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC) {
@@ -34,7 +35,7 @@ public class Triangle implements TriangleObservable {
         return pointA;
     }
 
-    public void setPointA(CustomPoint pointA) throws ShapeException {
+    public void setPointA(CustomPoint pointA) throws TriangleException {
         this.pointA = pointA;
         notifyObservers();
     }
@@ -43,7 +44,7 @@ public class Triangle implements TriangleObservable {
         return pointB;
     }
 
-    public void setPointB(CustomPoint pointB) throws ShapeException {
+    public void setPointB(CustomPoint pointB) throws TriangleException {
         this.pointB = pointB;
         notifyObservers();
     }
@@ -52,7 +53,7 @@ public class Triangle implements TriangleObservable {
         return pointC;
     }
 
-    public void setPointC(CustomPoint pointC) throws ShapeException {
+    public void setPointC(CustomPoint pointC) throws TriangleException {
         this.pointC = pointC;
         notifyObservers();
     }
@@ -68,7 +69,7 @@ public class Triangle implements TriangleObservable {
     }
 
     @Override
-    public void notifyObservers() throws ShapeException {
+    public void notifyObservers() throws TriangleException {
         if (observers == null) {
             logger.info("TriangleObserver is null");
             return;

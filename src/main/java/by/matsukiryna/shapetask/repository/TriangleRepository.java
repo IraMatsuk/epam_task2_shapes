@@ -8,6 +8,8 @@ import java.util.List;
 public interface TriangleRepository {
     void add(Triangle triangle);
 
+    boolean addAll(List<Triangle> triangleList);
+
     Triangle remove(int index);
 
     List<Triangle> query(TriangleSpecification specification);

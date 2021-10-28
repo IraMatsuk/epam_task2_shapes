@@ -49,6 +49,11 @@ public class TriangleRepositoryImpl implements TriangleRepository {
     }
 
     @Override
+    public boolean addAll(List<Triangle> triangleList) {
+        return triangles.addAll(triangleList);
+    }
+
+    @Override
     public Triangle remove(int index) {
         return triangles.remove(index);
     }

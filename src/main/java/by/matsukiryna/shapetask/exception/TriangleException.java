@@ -1,17 +1,17 @@
 package by.matsukiryna.shapetask.exception;
 
-public class ShapeException extends Exception {
-    public ShapeException(){}
+public class TriangleException extends Exception {
+    public TriangleException(){}
 
-    public ShapeException(String message) {
+    public TriangleException(String message) {
         super(message);
     }
 
-    public ShapeException(String message, Throwable cause) {
+    public TriangleException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ShapeException(Throwable cause) {
+    public TriangleException(Throwable cause) {
         super(cause);
     }
 

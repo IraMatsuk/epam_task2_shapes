@@ -1,13 +1,13 @@
 package by.matsukiryna.shapetask.validator;
 
-import by.matsukiryna.shapetask.exception.ShapeException;
+import by.matsukiryna.shapetask.exception.TriangleException;
 
 import java.io.File;
 
 public class FileValidator {
-    public static boolean isFileValidate(String fileAddress) throws ShapeException {
+    public static boolean isFileValidate(String fileAddress) throws TriangleException {
         if (fileAddress == null || fileAddress.isBlank()) {
-            throw new ShapeException("Invalid file address" + fileAddress);
+            throw new TriangleException("Invalid file address" + fileAddress);
         }
         File file = new File(fileAddress);
         if (file.exists() && file.canRead() && file.isFile() && file.length() > 0) {

@@ -1,6 +1,5 @@
 package by.matsukiryna.shapetask.entity;
 
-import java.util.Objects;
 import java.util.StringJoiner;
 
 public class CustomPoint {
@@ -40,9 +39,13 @@ public class CustomPoint {
     }
 
     @Override
-    //TODO without object methods
     public int hashCode() {
-        return Objects.hash(x, y);
+        int result = 11;
+        long longBits = Double.doubleToLongBits(this.x);
+        result = 31 * result + (int) (longBits - (longBits >>> 32));
+        longBits = Double.doubleToLongBits(this.y);
+        result = 31 * result + (int) (longBits - (longBits >>> 32));
+        return result;
     }
 
     @Override

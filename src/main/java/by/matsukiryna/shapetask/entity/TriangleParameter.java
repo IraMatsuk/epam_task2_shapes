@@ -6,11 +6,12 @@ public class TriangleParameter {
     private double perimeter;
     private double area;
 
-    public TriangleParameter() {}
+    public TriangleParameter() {
+    }
 
-    public TriangleParameter(double perimeter, double square) {
+    public TriangleParameter(double perimeter, double area) {
         this.perimeter = perimeter;
-        this.area = square;
+        this.area = area;
     }
 
     public double getPerimeter() {
@@ -21,12 +22,12 @@ public class TriangleParameter {
         this.perimeter = perimeter;
     }
 
-    public double getSquare() {
+    public double getArea() {
         return area;
     }
 
-    public void setSquare(double square) {
-        this.area = square;
+    public void setArea(double area) {
+        this.area = area;
     }
 
     @Override
@@ -51,7 +52,7 @@ public class TriangleParameter {
     public String toString() {
         return new StringJoiner(", ", TriangleParameter.class.getSimpleName() + "[", "]")
                 .add("perimeter=" + perimeter)
-                .add("square=" + area)
+                .add("area=" + area)
                 .toString();
     }
 }
