@@ -12,7 +12,6 @@ public class TriangleIdSpecification implements TriangleSpecification {
 
     @Override
     public boolean specify(Triangle triangle) {
-        boolean result = triangle.getTriangleId() == triangleId;
-        return result;
+        return triangle.getTriangleId() == triangleId;
     }
 }

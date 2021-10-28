@@ -1,18 +1,30 @@
 package by.matsukiryna.shapetask.parser.impl;
 
+import by.matsukiryna.shapetask.exception.TriangleException;
 import by.matsukiryna.shapetask.parser.TriangleParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TriangleParserImpl implements TriangleParser {
     static final Logger logger = LogManager.getLogger();
-    private static final String REGEX_DELIMITER= "\\s+";
+    private static final String REGEX_DELIMITER = "\\s+";
 
     @Override
-    public double[] parseLine(String line) {
-        String[] strDoubles = line.split(REGEX_DELIMITER);
+    public double[] parseLine(List<String> lines) throws TriangleException {
+        if (lines == null || lines.size() == 0) {
+            logger.error("Input list is empty or size is zero.");
+            throw new TriangleException("Input list is empty or size is zero." + lines);
+        }
+        String listToStr = lines.stream()
+                                .map(n -> String.valueOf(n))
+                                .collect(Collectors.joining());
+        logger.info("Read from file: " + listToStr);
+
+        String[] strDoubles = listToStr.split(REGEX_DELIMITER);
         double[] result = Arrays.stream(strDoubles)
                                 .mapToDouble(Double::parseDouble)
                                 .toArray();

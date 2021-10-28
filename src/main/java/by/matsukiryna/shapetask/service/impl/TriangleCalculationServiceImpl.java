@@ -26,7 +26,7 @@ public class TriangleCalculationServiceImpl implements TriangleCalculationServic
             perimeter += side;
         }
         perimeter = roundDouble(perimeter);
-        logger.info("Triangle perimeter is " + triangle.getTriangleId() + " " + perimeter);
+        logger.info("Triangle perimeter with ID " + triangle.getTriangleId() + " is " + perimeter);
         return OptionalDouble.of(perimeter);
     }
 
@@ -36,19 +36,19 @@ public class TriangleCalculationServiceImpl implements TriangleCalculationServic
             logger.warn("Triangle is null.");
             return OptionalDouble.empty();
         }
+        double triangleArea = Math.abs((triangle.getPointB().getX() - triangle.getPointA().getX()) *
+                (triangle.getPointC().getY() - triangle.getPointA().getY()) -
+                (triangle.getPointC().getX() - triangle.getPointA().getX()) *
+                (triangle.getPointB().getY() - triangle.getPointA().getY()) / 2);
 
-        double triangleArea = Math.abs(triangle.getPointA().getX() - triangle.getPointC().getX()) *
-                (triangle.getPointB().getY() - triangle.getPointC().getY()) -
-                (triangle.getPointB().getX() - triangle.getPointC().getX()) *
-                        (triangle.getPointA().getY() - triangle.getPointC().getY()) / 2;
         triangleArea = roundDouble(triangleArea);
-        logger.info("Triangle area is " + triangle.getTriangleId() + " " + triangleArea);
+        logger.info("Triangle area with ID " + triangle.getTriangleId() + " is " + triangleArea);
         return OptionalDouble.of(triangleArea);
     }
 
     private double calculateSide(CustomPoint pointA, CustomPoint pointB) {
         double side = roundDouble(Math.hypot(pointB.getX() - pointA.getX(), pointB.getY() - pointA.getY()));
-        logger.debug("Side is ", side);
+        logger.debug("Side is " + side);
         return side;
     }
 
