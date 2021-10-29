@@ -20,14 +20,14 @@ public class TriangleCalculationServiceImplTest {
     @Test
     public void testCalculateTriangleArea() {
         double actual = triangleCalculationService.calculateTriangleArea(triangle).getAsDouble();
-        double expected = 0.825;
+        double expected = 0.82;
         assertEquals(actual, expected);
     }
 
     @Test
     public void testCalculateTrianglePerimeter() {
         double actual = triangleCalculationService.calculateTrianglePerimeter(triangle).getAsDouble();
-        double expected = 6.749;
+        double expected = 6.75;
         assertEquals(actual, expected);
     }
 
