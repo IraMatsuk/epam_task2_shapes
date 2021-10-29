@@ -45,6 +45,7 @@ public class MainClass {
 
         TriangleServiceImpl triangleService = new TriangleServiceImpl();
         triangles.forEach(triangleService::isRightTriangle);
+        triangles.forEach(triangleService::isIsoscelesTriangle);
 
         Warehouse warehouse = Warehouse.getInstance();
         for (Triangle triangle : triangles) {
@@ -60,7 +61,7 @@ public class MainClass {
         triangle.attach(triangleObserver1);
         triangle.attach(triangleObserver2);
         logger.info(warehouse.get(triangle.getTriangleId()));
-        triangle.setPointA(new CustomPoint(1.2, 2.4));
+        triangle.setPointA(new CustomPoint(3.2, 0.4));
         Optional<TriangleParameter> updateParameter = warehouse.get(triangle.getTriangleId());
         logger.info("Update parameters: " + updateParameter);
 

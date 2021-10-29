@@ -6,11 +6,12 @@ import by.matsukiryna.shapetask.service.TriangleCalculationService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.OptionalDouble;
 
 public class TriangleCalculationServiceImpl implements TriangleCalculationService {
     static final Logger logger = LogManager.getLogger();
-    private static final double ROUND_SCALE = 1000;
 
     @Override
     public OptionalDouble calculateTrianglePerimeter(Triangle triangle) {
@@ -60,6 +61,8 @@ public class TriangleCalculationServiceImpl implements TriangleCalculationServic
     }
 
     private double roundDouble(double value) {
-        return Math.round(value * ROUND_SCALE) / ROUND_SCALE;
+        BigDecimal roundDoubleResult = new BigDecimal(value);
+        roundDoubleResult = roundDoubleResult.setScale(2, RoundingMode.HALF_UP);
+        return roundDoubleResult.doubleValue();
     }
 }
